@@ -22,18 +22,18 @@ CC =		gcc
 all:		$(NAME)
 
 $(NAME):
-		${CC} -Wall -Wextra -Werror -c ${SRCS}
-		ar rc ${NAME}   ${OBJ}
-		ranlib ${NAME}
+		@${CC} -Wall -Wextra -Werror -c ${SRCS}
+		@ar rc ${NAME}   ${OBJ}
+		@ranlib ${NAME}
 
 clean:
-		rm -f ${OBJ} $(BONUS_OBJ)
+		@rm -f ${OBJ} $(BONUS_OBJ)
 
 fclean:		clean
-		rm -f ${NAME}
+		@rm -f ${NAME}
 
 bonus:			$(OBJ) $(BONUS_OBJ)
-				ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+				@ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
 
 re:		fclean ${NAME}
 

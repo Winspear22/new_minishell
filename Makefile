@@ -6,7 +6,7 @@
 #    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 08:05:34 by adaloui           #+#    #+#              #
-#    Updated: 2022/02/18 08:07:46 by adaloui          ###   ########.fr        #
+#    Updated: 2022/02/18 08:46:47 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,3 +66,5 @@ fclean: clean
 	@echo "Tout a été supprimé !"
 	
 re: fclean all
+
+.PHONY:		all clean fclean re bonus
