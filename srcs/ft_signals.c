@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:27:34 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/18 09:11:39 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/18 11:21:57 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,31 @@
 
 void	ft_signals_handler(int signal)
 {
+	int i;
+
+	i = 0;
+	if (signal == SIGQUIT)
+		rl_replace_line("", 0);
 	if (signal == SIGINT)
 	{
 		ft_putstr_fd("\n", 0);
-		ft_putstr_fd("\033[0;33muser\033[0;35m42->\033[0;37m", 0);
+		ft_putstr_fd("\033[0;33madaloui\033[0;35m42->\033[0;37m", 0);
 	}
 	if (signal == SIGSEGV)
 	{
 		ft_putstr_fd("\nexit\n", 0);
+		while (i <= 150)
+		{
+			close(i);
+			i++;
+		}
 		exit(EXIT_FAILURE);
 	}
-	if (signal == SIGQUIT)
-		ft_putstr_fd("", 0);
 }
 
 void	ft_signals(void)
 {
-	signal(SIGINT, &ft_signals_handler);
-	signal(SIGSEGV, &ft_signals_handler);
-	signal(SIGQUIT, &ft_signals_handler);
+	signal(SIGINT, ft_signals_handler);
+	signal(SIGSEGV, ft_signals_handler);
+	signal(SIGQUIT, SIG_IGN);
 }

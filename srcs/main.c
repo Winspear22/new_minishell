@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:07:53 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/18 09:07:17 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/18 11:14:41 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	char *str;
+	char	*buffer;
+	int		i;
+	
+	i = 0;
 	ft_signals();
 	while (1)
 	{
-		str = readline("\033[0;33muser\033[0;35m42->\033[0;37m");
-		if (strcmp(str, "exit") == 0)
+		buffer = readline("\033[0;33madaloui\033[0;35m42->\033[0;37m");
+		if (strcmp(buffer, "exit") == 0)
+		{
+			free(buffer);
+			while (i <= 150)
+			{
+				close(i);
+				i++;
+			}
 			return (0);
+		}
 	}
 	return (0);
 }
