@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:07:53 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/18 11:14:41 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/21 17:05:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,27 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	char	*buffer;
-	int		i;
+	char	*buffer = NULL;
+	char	**cmd = NULL;
+	char	*pwd;
 	
-	i = 0;
 	ft_signals();
 	while (1)
 	{
-		buffer = readline("\033[0;33madaloui\033[0;35m42->\033[0;37m");
-		if (strcmp(buffer, "exit") == 0)
+		pwd = getcwd(NULL, 0);
+		buffer = readline(pwd);
+		free(pwd);
+		cmd = ft_split(buffer, ' ');
+		if (cmd[0] == NULL)
+			ft_putstr_fd(NULL, 0);
+		if (cmd[0] != NULL)
 		{
+			add_history(buffer);
 			free(buffer);
-			while (i <= 150)
-			{
-				close(i);
-				i++;
-			}
-			return (0);
+			if (ft_is_built_in(cmd[0]) == 1)
+				exec_built_in(cmd, env);
+			else
+				ft_putstr_fd("built-in introuvable", 0);
 		}
 	}
 	return (0);

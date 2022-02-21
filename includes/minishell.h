@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:08:32 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/18 11:05:01 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/21 23:42:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <stdlib.h>
+# include <errno.h>
 # include "../libft/libft.h"
 
 # define SUCCESS 0
@@ -47,5 +48,34 @@ enum e_token
 /*	FT_SIGNALS	*/
 void	ft_signals(void);
 void	ft_signals_handler(int signal);
+
+/*	FT_ERRORS_HANDLERS	*/
+void	ft_free_charr(char **path);
+int		ft_custom_error(char *errstr);
+int		ft_system_error(void);
+
+/*	FT_BUILT_IN_CHECKER	*/
+int		ft_is_built_in(char *cmd);
+int		exec_built_in(char **built_in, char **envp);
+
+/*	FT_PWD	*/
+int		ft_builtin_pwd(char **argv);
+
+/*	FT_CD	*/
+int		ft_built_in_cd(char **path, char **envp);
+
+/*	FT_EXIT	*/
+int		ft_built_in_exit(char **cmd, char **envp);
+
+/*	FT_ENV	*/
+void	ft_built_in_env(char **built_in, char **env);
+
+/*	FT_UNSET	*/
+int ft_built_in_unset(char **cmd, char **envp);
+
+/*	FT_GET_VAR_ENV	*/
+char	**ft_get_var_env(char **envp, char *str);
+char	**ft_get_var_env_2(char **envp, char *var_env);
+
 
 #endif
