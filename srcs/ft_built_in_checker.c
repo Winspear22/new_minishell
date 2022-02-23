@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:03:44 by user42            #+#    #+#             */
-/*   Updated: 2022/02/21 23:33:23 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/23 23:02:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	exec_built_in(char **built_in, char **envp)
 	else if (!ft_strcmp(built_in[0], "exit"))
 		ret = ft_built_in_exit(built_in, envp);
 	else if (!ft_strcmp(built_in[0], "echo"))
-		printf("built_in executé avec succès\n");
+		ret = ft_built_in_echo(built_in);
 	else if (!ft_strcmp(built_in[0], "env"))
 		ft_built_in_env(built_in, envp);
 	else if (!ft_strcmp(built_in[0], "export"))

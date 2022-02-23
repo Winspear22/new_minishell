@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:08:32 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/23 21:11:11 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/23 23:00:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ int		ft_built_in_exit(char **cmd, char **envp);
 /*	FT_ENV	*/
 void	ft_built_in_env(char **built_in, char **env);
 
+/*	FT_ECHO	*/
+int		ft_built_in_echo(char **cmd);
+
 /*	FT_UNSET	*/
-int ft_built_in_unset(char **cmd, char **envp);
+int 	ft_built_in_unset(char **cmd, char **envp);
 
 /*	FT_GET_VAR_ENV	*/
 char	**ft_get_var_env(char **envp, char *str);
