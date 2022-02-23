@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:08:32 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/21 23:42:47 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/23 21:11:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ enum e_token
 	TOKEN_VAR = 12,
 	TOKEN_WORD = 13
 };
+
+typedef struct s_decompte
+{
+	int i;
+	int j;
+}				t_decompte;
 
 /*	FT_SIGNALS	*/
 void	ft_signals(void);

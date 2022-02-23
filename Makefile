@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 08:05:34 by adaloui           #+#    #+#              #
-#    Updated: 2022/02/18 11:11:57 by adaloui          ###   ########.fr        #
+#    Updated: 2022/02/23 19:51:30 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ endif
 
 OBJ = *.o
 
-FLAGS = -ggdb3 -std=c11 -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 LIBFT_A = libft.a
 LIBFT_DOSSIER = libft/
@@ -39,8 +39,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo $(CYAN) "Compilation en cours de $(NAME) crée par $(RED)fasi-moh et adaloui$(CYAN) sur l'OS \"$(NAME_OS)\"" $(WHITE)
-	@make -C $(LIBFT_DOSSIER)
-	@gcc $(FLAGS) $(LIBFT) $(OBJ) -o $(NAME) -lreadline -ggdb3 -std=c11
+	@make --no-print-directory -s -C $(LIBFT_DOSSIER)
+	@gcc $(FLAGS) $(LIBFT) $(OBJ) -o $(NAME) -lreadline
 	@echo ""
 	@echo $(BLUE)"Tout a été compilé avec succès ! -"$(WHITE)
 
@@ -53,13 +53,13 @@ clean:
 	@echo $(CYAN) "Suppression des fichiers .o de $(NAME)." $(WHITE)
 	@echo $(CYAN) "Suppression des fichiers .o de la libft." $(WHITE)
 	@rm -f $(OBJ)
-	@make -C $(LIBFT_DOSSIER) clean
+	@make  --no-print-directory -s -C $(LIBFT_DOSSIER) clean
 	@echo "Nettoyage des fichiers .o effectué"
 
 fclean: clean
 	@echo $(CYAN) "Suppression du logiciel $(NAME)." $(WHITE)
 	@rm -rf $(NAME)
-	@make -C $(LIBFT_DOSSIER) fclean
+	@make  --no-print-directory -s -C $(LIBFT_DOSSIER) fclean
 	@echo "Tout a été supprimé !"
 	
 re: fclean all
