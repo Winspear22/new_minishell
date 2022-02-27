@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:40:02 by user42            #+#    #+#             */
-/*   Updated: 2022/02/27 17:32:08 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/27 17:49:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,11 @@ static int
 static int
 	ft_built_in_export_add(char *s, char *t, char **envp)
 {
-//	char			*c;
+	char			*c;
 	int				i;
 	
 	i = 0;
-	/*if (ft_built_in_export_check(s))
+	if (ft_built_in_export_check(s))
 		return (FAILURE);
 	c = ft_strdup(t);
 	if (!c)
@@ -110,18 +110,12 @@ static int
 	while (envp[i])
 		i++;
 	printf("i = %d\n", i);
-	//printf("s = %s\n t = %s\n c = %s\n", s, t, c);
-//	envp = realloc_envs(i + 10, envp);
+	printf("s = %s\n t = %s\n c = %s\n", s, t, c);
+	envp = realloc_envs(i + 10, envp);
 	envp[i - 1] = "POPOLOLOLOPGHJGHXHXWGHWGWRG<WEGW<G<RG<G<GF<FG<GF<G<";
 	envp = realloc_envs(i + 10, envp);
 	printf("salut\n");
 	envp[i + 5] = "POPOLOLOLOPGHJGHXHXWGHWGWRG<";
-
-	/*i = 0;
-	while (envp[i])
-		i++;
-	printf("i = %d\n", i);*/
-	
 	return (SUCCESS);
 }
 
@@ -129,7 +123,6 @@ static int
 
 int ft_built_in_export(char **cmd, char **envp)
 {
-    char **env_add;
     unsigned int chr;
     char        tmp;
     char        *s;
