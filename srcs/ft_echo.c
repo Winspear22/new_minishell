@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 22:05:30 by user42            #+#    #+#             */
-/*   Updated: 2022/02/23 23:06:59 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/26 16:59:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ static void ft_built_in_echo_n(char ***args, int *newline)
 	*args = ptr;
 }
 
-
-
 int ft_built_in_echo(char **cmd)
 {
     int		newline;
 	char	**ptr;
+	pid_t ret;
+	int *status;
+	int exit_code;
 
 	ptr = cmd + 1;
 	newline = 1;
@@ -63,3 +64,52 @@ int ft_built_in_echo(char **cmd)
 		return (ft_system_error());
 	return (SUCCESS);
 }
+
+/*int	built_in_echo(char **cmd)
+{
+    int i;
+	int j = 0;
+
+	i = 1;
+	if (!cmd)
+		ft_putstr_fd("\n", 0);
+	while (cmd[i])
+    {
+		ft_putstr_fd(cmd[i], 0);
+		if (cmd[i] != "\0")
+			ft_putstr_fd(" ", 0);
+		i++;
+	}
+	ft_putstr_fd("\n", 0);
+	return (0);
+}
+
+int ft_built_in_echo(char **cmd)
+{
+    int i;
+	int j;
+	char *var_env = NULL;
+
+	i = 0;
+	if (cmd[1] == NULL)
+	{	
+		ft_putstr_fd("\n", 0);
+		return (0);
+	}
+	if (strcmp(cmd[1], "-n") == 0)
+	{
+		i = 2;
+		while (cmd[i])
+		{
+			ft_putstr_fd(cmd[i], 0);
+			i++;
+		}
+		return (0);
+	}
+	if (cmd[1][0] == '$' && cmd[1][1] == '?')
+		printf("%d\n", g_ectx->exit_value);
+    else
+        built_in_echo(cmd);
+    ft_free_charr(cmd);
+    return (0);
+}*/

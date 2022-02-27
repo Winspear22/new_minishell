@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:27:34 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/18 11:21:57 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/27 14:07:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_signals_handler(int signal)
 	}
 	if (signal == SIGSEGV)
 	{
-		ft_putstr_fd("\nexit\n", 0);
+		ft_putstr_fd("\nexit lolo\n", 0);
 		while (i <= 150)
 		{
 			close(i);
@@ -39,6 +39,6 @@ void	ft_signals_handler(int signal)
 void	ft_signals(void)
 {
 	signal(SIGINT, ft_signals_handler);
-	signal(SIGSEGV, ft_signals_handler);
-	signal(SIGQUIT, SIG_IGN);
+/*	signal(SIGSEGV, ft_signals_handler);
+	signal(SIGQUIT, SIG_IGN);*/
 }

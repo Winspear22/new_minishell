@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:08:32 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/23 23:00:56 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/26 18:28:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,26 @@
 # include <stdlib.h>
 # include <errno.h>
 # include "../libft/libft.h"
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+# include <stddef.h>
+# include <stdint.h>
 
 # define SUCCESS 0
 # define FAILURE 1
 # define NB_TOKEN 14
+
+extern struct s_ectx	*g_ectx;
+
+struct s_ectx
+{
+	char *buffer;
+	char **cmd;
+	char *pwd;
+	pid_t pid;
+	int	exit_value;
+};
 
 enum e_token
 {
@@ -82,9 +98,14 @@ int		ft_built_in_echo(char **cmd);
 /*	FT_UNSET	*/
 int 	ft_built_in_unset(char **cmd, char **envp);
 
+/*	FT_EXPORT	*/
+int		ft_built_in_export(char **cmd, char **envp);
+
 /*	FT_GET_VAR_ENV	*/
 char	**ft_get_var_env(char **envp, char *str);
 char	**ft_get_var_env_2(char **envp, char *var_env);
+
+void		status_child(void);
 
 
 #endif

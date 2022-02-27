@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:09:23 by user42            #+#    #+#             */
-/*   Updated: 2022/02/23 23:13:29 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/26 16:46:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,9 @@ int ft_calc_exit_nb(char *cmd, int *i)
 int ft_built_in_exit(char **cmd, char **envp)
 {
     int i;
-    int argc;
-    int fout;
     int j;
 
     j = 0;
-    argc = 0;
     if (cmd[1] == NULL)
         i = 0;
     else if (cmd[2])
@@ -58,7 +55,6 @@ int ft_built_in_exit(char **cmd, char **envp)
         if (ft_calc_exit_nb(cmd[1], &i))
 			return (ft_custom_error("exit: bad number"));
     }
-    
     ft_free_charr(cmd);
     while (j <= 150)
     {
