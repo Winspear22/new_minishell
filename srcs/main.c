@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:07:53 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/26 16:52:43 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 16:00:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ int	main(int argc, char **argv, char **env)
 	g_ectx->pwd = NULL;
 	
 	ft_signals();
+	g_ectx->envp_2 = ft_env_cpy(env, g_ectx->envp_2);
 	while (1)
 	{
 		g_ectx->pwd = getcwd(NULL, 0);

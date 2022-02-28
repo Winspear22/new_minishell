@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:08:32 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/26 18:28:11 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 18:03:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,19 @@
 
 extern struct s_ectx	*g_ectx;
 
+typedef struct s_decompte
+{
+	int i;
+	int j;
+}				t_decompte;
+
 struct s_ectx
 {
 	char *buffer;
 	char **cmd;
 	char *pwd;
 	pid_t pid;
+	char **envp_2;
 	int	exit_value;
 };
 
@@ -60,12 +67,6 @@ enum e_token
 	TOKEN_VAR = 12,
 	TOKEN_WORD = 13
 };
-
-typedef struct s_decompte
-{
-	int i;
-	int j;
-}				t_decompte;
 
 /*	FT_SIGNALS	*/
 void	ft_signals(void);
@@ -106,6 +107,7 @@ char	**ft_get_var_env(char **envp, char *str);
 char	**ft_get_var_env_2(char **envp, char *var_env);
 
 void		status_child(void);
+char		**ft_env_cpy(char **envp, char **envp_2);
 
 
 #endif

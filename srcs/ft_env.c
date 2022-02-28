@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 21:10:54 by user42            #+#    #+#             */
-/*   Updated: 2022/02/26 16:47:31 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 18:02:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	ft_built_in_env(char **built_in, char **env)
 		ft_custom_error("env: aucun argument n'est possible");
 	else
 	{
-		while (env[i])
+		while (g_ectx->envp_2[i])
 		{
 			j = 0;
-			while (env[i][j] && env[i][j] != '\n')
+			while (g_ectx->envp_2[i][j] && g_ectx->envp_2[i][j] != '\n')
 			{
-				ft_putchar_fd(env[i][j], 0);
+				ft_putchar_fd(g_ectx->envp_2[i][j], 0);
 				j++;
 			}
 			ft_putchar_fd('\n', 0);

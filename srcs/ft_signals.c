@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:27:34 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/27 14:07:36 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 13:57:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	ft_signals_handler(int signal)
 void	ft_signals(void)
 {
 	signal(SIGINT, ft_signals_handler);
-/*	signal(SIGSEGV, ft_signals_handler);
-	signal(SIGQUIT, SIG_IGN);*/
+	signal(SIGSEGV, ft_signals_handler);
+	signal(SIGQUIT, SIG_IGN);
 }

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:40:02 by user42            #+#    #+#             */
-/*   Updated: 2022/02/27 17:49:20 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 17:56:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,27 +95,49 @@ static int
 	return (SUCCESS);
 }
 
+char **ft_env_cpy(char **envp, char **envp_2)
+{
+	int i;
+
+	i = 0;
+	while (envp[i])
+		i++;
+	envp_2 = (char **)malloc(sizeof(char *) * (i));
+	if (!envp_2)
+		return (NULL);
+	i = 0;
+	while (envp[i])
+	{
+		envp_2[i] = envp[i];
+		i++;
+	}
+	return (envp_2);	
+}
+
 static int
 	ft_built_in_export_add(char *s, char *t, char **envp)
 {
 	char			*c;
 	int				i;
-	
+	static int		k;
+	static int		j;
+
 	i = 0;
 	if (ft_built_in_export_check(s))
 		return (FAILURE);
-	c = ft_strdup(t);
-	if (!c)
-		return (ft_system_error());*/
+	c = ft_strjoin(s, "=");
+	c = ft_strjoin(c, t);
 	while (envp[i])
 		i++;
-	printf("i = %d\n", i);
-	printf("s = %s\n t = %s\n c = %s\n", s, t, c);
-	envp = realloc_envs(i + 10, envp);
-	envp[i - 1] = "POPOLOLOLOPGHJGHXHXWGHWGWRG<WEGW<G<RG<G<GF<FG<GF<G<";
-	envp = realloc_envs(i + 10, envp);
-	printf("salut\n");
-	envp[i + 5] = "POPOLOLOLOPGHJGHXHXWGHWGWRG<";
+	j = i;
+	if (k == 0)
+		g_ectx->envp_2 = ft_env_cpy(envp, g_ectx->envp_2);
+	g_ectx->envp_2 = realloc_envs(k + j, g_ectx->envp_2);
+	g_ectx->envp_2[k + j] = c;
+	if (k > 0)
+		k++;
+	if (k == 0)
+		k++;
 	return (SUCCESS);
 }
 

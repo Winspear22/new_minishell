@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:59:07 by user42            #+#    #+#             */
-/*   Updated: 2022/02/26 16:47:04 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 17:22:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int ft_built_in_unset(char **cmd, char **envp)
     if (cmd[1] == NULL)
         ft_putstr_fd("", 0);
     else
-		ft_built_in_unset_2(cmd, envp, p);
+		ft_built_in_unset_2(cmd, g_ectx->envp_2, p);
     return (SUCCESS);
 }
