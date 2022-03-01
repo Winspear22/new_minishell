@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:08:32 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/28 18:03:40 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 09:16:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ struct s_ectx
 	pid_t pid;
 	char **envp_2;
 	int	exit_value;
+	int	unset_minus;
 };
 
 enum e_token

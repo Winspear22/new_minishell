@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:40:02 by user42            #+#    #+#             */
-/*   Updated: 2022/02/28 17:56:30 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 15:26:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ char **ft_env_cpy(char **envp, char **envp_2)
 	return (envp_2);	
 }
 
+
 static int
 	ft_built_in_export_add(char *s, char *t, char **envp)
 {
@@ -132,12 +133,27 @@ static int
 	j = i;
 	if (k == 0)
 		g_ectx->envp_2 = ft_env_cpy(envp, g_ectx->envp_2);
+/*	g_ectx->envp_2 = realloc_envs(k + j, g_ectx->envp_2);
+	g_ectx->envp_2[k + j] = c;*/
+	printf("k avant = %d\n", k);
+	if (g_ectx->unset_minus > 0)
+	{
+		while (g_ectx->unset_minus >= 0)
+		{
+			g_ectx->unset_minus--;
+			k--;
+		}
+	}
 	g_ectx->envp_2 = realloc_envs(k + j, g_ectx->envp_2);
 	g_ectx->envp_2[k + j] = c;
 	if (k > 0)
 		k++;
 	if (k == 0)
 		k++;
+	g_ectx->unset_minus = 0;
+	printf("k après = %d\n", k);
+	printf("unset_minus EXPORT = %d\n", g_ectx->unset_minus);
+
 	return (SUCCESS);
 }
 
